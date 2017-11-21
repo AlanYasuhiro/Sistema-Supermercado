@@ -1,0 +1,102 @@
+package Janelas;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import java.awt.Color;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JScrollPane;
+import javax.swing.JButton;
+
+public class ConsultaFuncionario extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField txtNome;
+	private JTable tableFuncionario;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					ConsultaFuncionario frame = new ConsultaFuncionario();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	public ConsultaFuncionario() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 614, 384);
+		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblConsultaFuncionrio = new JLabel("CONSULTA FUNCION\u00C1RIO");
+		lblConsultaFuncionrio.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblConsultaFuncionrio.setBounds(203, 11, 222, 14);
+		contentPane.add(lblConsultaFuncionrio);
+		
+		JLabel lblNome = new JLabel("Nome:");
+		lblNome.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNome.setBounds(10, 46, 46, 14);
+		contentPane.add(lblNome);
+		
+		txtNome = new JTextField();
+		txtNome.setBounds(51, 44, 258, 20);
+		contentPane.add(txtNome);
+		txtNome.setColumns(10);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 71, 578, 232);
+		contentPane.add(scrollPane);
+		
+		tableFuncionario = new JTable();
+		tableFuncionario.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		scrollPane.setViewportView(tableFuncionario);
+		tableFuncionario.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"Nome", "Endere\u00E7o", "N\u00BA", "Bairro", "Fun\u00E7\u00E3o", "CTPS", "CNH"
+			}
+		));
+		
+		JButton btnExcluir = new JButton("EXCLUIR");
+		btnExcluir.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnExcluir.setBackground(Color.WHITE);
+		btnExcluir.setBounds(499, 314, 89, 23);
+		contentPane.add(btnExcluir);
+		
+		JButton btnAlterar = new JButton("ALTERAR");
+		btnAlterar.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnAlterar.setBackground(Color.WHITE);
+		btnAlterar.setBounds(402, 314, 89, 23);
+		contentPane.add(btnAlterar);
+		
+		JButton btnVoltar = new JButton("VOLTAR");
+		btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnVoltar.setBounds(303, 314, 89, 23);
+		contentPane.add(btnVoltar);
+		tableFuncionario.getColumnModel().getColumn(0).setPreferredWidth(201);
+		tableFuncionario.getColumnModel().getColumn(1).setPreferredWidth(179);
+		tableFuncionario.getColumnModel().getColumn(2).setPreferredWidth(34);
+		tableFuncionario.getColumnModel().getColumn(3).setPreferredWidth(93);
+		tableFuncionario.getColumnModel().getColumn(4).setPreferredWidth(89);
+	}
+
+}
